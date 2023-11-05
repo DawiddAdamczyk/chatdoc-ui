@@ -1,22 +1,11 @@
-# Chatbot Ollama
+# Chatdoc UI
 
 ## About
 
-Chatbot Ollama is an open source chat UI for Ollama.
+Chatdoc UI is an open source project for offline interaction with internal documents.
 
-This project is based on [chatbot-ui](https://github.com/mckaywrigley/chatbot-ui) by [Mckay Wrigley](https://github.com/mckaywrigley).
+This project is based on [chatbot-ui](https://github.com/mckaywrigley/chatbot-ui) by [Mckay Wrigley](https://github.com/mckaywrigley) and [chatbot-ollama](https://github.com/ivanfioravanti/chatbot-ollama) by [Ivan Fioravanti](https://github.com/ivanfioravanti)
 
-![Chatbot Ollama](./public/screenshots/screenshot-2023-10-02.png)
-
-## Updates
-
-Chatbot Ollama will be updated over time.
-
-### Next up
-
-- [ ] pull a model
-- [ ] delete a model
-- [ ] show model information
 
 ## Docker
 
@@ -38,7 +27,7 @@ docker run -p 3000:3000 ghcr.io/ivanfioravanti/chatbot-ollama:main
 ### 1. Clone Repo
 
 ```bash
-git clone https://github.com/ivanfioravanti/chatbot-ollama.git
+git clone ttps://github.com/DawiddAdamczyk/chatdoc-ui.git
 ```
 
 ### 2. Install Dependencies
@@ -77,6 +66,4 @@ When deploying the application, the following environment variables can be set:
 | NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT | [see here](utils/app/const.ts) | The default system prompt to use on new conversations                                                                                     |
 | NEXT_PUBLIC_DEFAULT_TEMPERATURE   | 1                              | The default temperature to use on new conversations                                                                                       |
 
-## Contact
 
-If you have any questions, feel free to reach out to me on [X](https://x.com/ivanfioravanti).
