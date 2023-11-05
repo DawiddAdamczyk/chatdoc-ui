@@ -18,12 +18,15 @@ import HomeContext from '@/pages/api/home/home.context';
 import { ChatFolders } from './components/ChatFolders';
 import { ChatbarSettings } from './components/ChatbarSettings';
 import { Conversations } from './components/Conversations';
+import { ImportDocumentsDialog } from './components/ImportDocumentsDialog'; 
+
 
 import Sidebar from '../Sidebar';
 import ChatbarContext from './Chatbar.context';
 import { ChatbarInitialState, initialState } from './Chatbar.state';
 
 import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react';
 
 export const Chatbar = () => {
   const { t } = useTranslation('sidebar');
@@ -32,6 +35,10 @@ export const Chatbar = () => {
     initialState,
   });
 
+  
+  // Inside your component function
+  const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
+  
   const {
     state: { conversations, showChatbar, defaultModelId, folders },
     dispatch: homeDispatch,
@@ -123,6 +130,11 @@ export const Chatbar = () => {
     }
   };
 
+
+  const handleImportDocuments = () => {
+    setIsImportDialogOpen(true);
+  };
+
   const handleToggleChatbar = () => {
     homeDispatch({ field: 'showChatbar', value: !showChatbar });
     localStorage.setItem('showChatbar', JSON.stringify(!showChatbar));
@@ -157,6 +169,7 @@ export const Chatbar = () => {
     }
   }, [searchTerm, conversations, chatDispatch]);
 
+
   return (
     <ChatbarContext.Provider
       value={{
@@ -165,6 +178,7 @@ export const Chatbar = () => {
         handleClearConversations,
         handleImportConversations,
         handleExportData,
+        handleImportDocuments
       }}
     >
       <Sidebar<Conversation>
@@ -184,6 +198,9 @@ export const Chatbar = () => {
         handleDrop={handleDrop}
         footerComponent={<ChatbarSettings />}
       />
+      {isImportDialogOpen && (
+    <ImportDocumentsDialog open={isImportDialogOpen} onClose={() => setIsImportDialogOpen(false)} />
+  )}
     </ChatbarContext.Provider>
   );
 };
