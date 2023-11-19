@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
+import uploadFile from '@/pages/api/importdocuments';
 
 interface Props {
   open: boolean;
@@ -12,6 +13,13 @@ export const ImportDocumentsDialog: FC<Props> = ({ open, onClose }) => {
   const [importSource, setImportSource] = useState<'confluence' | 'pdf' | 'markdown'>('confluence');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files != null) {
+      setFile(event.target.files[0]);
+    }
+  }
 
   useEffect(() => {
     const handleMouseDown = (e: MouseEvent) => {
@@ -99,9 +107,7 @@ export const ImportDocumentsDialog: FC<Props> = ({ open, onClose }) => {
                     type="file"
                     accept=".pdf"
                     multiple
-                    onChange={(e) => {
-                      // Handle PDF file selection logic here
-                    }}
+                    onChange={handleFile}
                     className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-none"
                   />
                 </label>
@@ -115,9 +121,7 @@ export const ImportDocumentsDialog: FC<Props> = ({ open, onClose }) => {
                     type="file"
                     accept=".md"
                     multiple
-                    onChange={(e) => {
-                      // Handle Markdown file selection logic here
-                    }}
+                    onChange={handleFile}
                     className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded focus:outline-none"
                   />
                 </label>
@@ -127,8 +131,12 @@ export const ImportDocumentsDialog: FC<Props> = ({ open, onClose }) => {
             <button
               type="button"
               className="w-full px-4 py-2 mt-6 border rounded-lg shadow border-neutral-500 text-neutral-900 hover:bg-neutral-100 focus:outline-none dark:border-neutral-800 dark:border-opacity-50 dark:bg-white dark:text-black dark:hover-bg-neutral-300"
-              onClick={() => {
+              onClick={async (event) => {
                 // Handle import logic here based on the import source, login, and password
+                event.preventDefault;
+                
+                uploadFile(file, importSource)
+
                 onClose();
               }}
             >

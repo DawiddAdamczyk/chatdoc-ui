@@ -10,7 +10,7 @@ const useApiService = () => {
 
   const getModels = useCallback(
     (): Promise<OllamaModel[]>  => {
-      return fetchService.get(`/api/models`, {
+      return fetchService.get(`/v1/collections/models`, {
         headers: {
           'Content-Type': 'application/json',
         },
