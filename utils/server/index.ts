@@ -22,7 +22,7 @@ export const OllamaStream = async (
   temperature : number,
   prompt: string,
 ) => {
-  let url = `${OLLAMA_HOST}/v1/collections/chat/query`;
+  let url = `${OLLAMA_HOST}/documents/chat`;
   const res = await fetch(url, {
     headers: {
       'Accept': 'application/json',
@@ -32,10 +32,7 @@ export const OllamaStream = async (
     },
     method: 'POST',
     body: JSON.stringify({
-      collection_name: "test",
-      pipeline_name: "embedding_pipeline",
       query: prompt,
-      limit: 5
     }),
   });
 
@@ -57,8 +54,9 @@ export const OllamaStream = async (
         for await (const chunk of res.body as any) {
           const text = decoder.decode(chunk); 
           const parsedData = JSON.parse(text); 
-          if (parsedData.response) {
-            controller.enqueue(encoder.encode(parsedData.response)); 
+          
+          if (parsedData.choices[0].delta.content) {
+            controller.enqueue(encoder.encode(parsedData.choices[0].delta.content)); 
           }
         }
         controller.close();

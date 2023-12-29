@@ -8,7 +8,7 @@ export const config = {
 
 const handler = async (req: Request): Promise<Response> => {
   try {
-    let url = `${OLLAMA_HOST}/v1/colletctions/models`;
+    let url = `${OLLAMA_HOST}/info/models`;
 
     const response = await fetch(url, {
       headers: {

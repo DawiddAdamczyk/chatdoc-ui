@@ -1,19 +1,24 @@
 import { OLLAMA_HOST } from "@/utils/app/const"
 
 
-const uploadFile = async (file: File | null, importSource: string) => {
+const uploadFile = async (file: FileList | null, importSource: string) => {
     if (file != null) {
         const formData = new FormData();
-        formData.append('collection_name', "test")
         formData.append('file_type', importSource)
-        formData.append('document', file);
+
+        for (let i = 0; i < file.length; i++) {
+          formData.append('documents', file[i]);
+        }
 
         try {
-          let url = `${OLLAMA_HOST}/v1/collections/documents/upload`;
+          let url = `${OLLAMA_HOST}/documents/upload`;
           const response = await fetch(url, {
             method: "POST", 
             body: formData
-        })
+          })
+          if (response.status === 200) {
+            console.log("Documents uploaded successfully")
+          }
         } catch(error) {
           console.error(error)
         }

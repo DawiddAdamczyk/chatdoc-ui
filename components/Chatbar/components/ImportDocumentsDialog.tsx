@@ -13,11 +13,11 @@ export const ImportDocumentsDialog: FC<Props> = ({ open, onClose }) => {
   const [importSource, setImportSource] = useState<'confluence' | 'pdf' | 'markdown'>('confluence');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<FileList | null>(null);
 
   const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files != null) {
-      setFile(event.target.files[0]);
+      setFile(event.target.files);
     }
   }
 
