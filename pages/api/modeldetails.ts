@@ -7,7 +7,7 @@ export const config = {
 
 const handler = async (req: Request): Promise<Response> => {
   try {
-    let url = `${OLLAMA_HOST}/api/show`;
+    let url = `${OLLAMA_HOST}/info/show`;
 
     const { name } = await req.json();
 
