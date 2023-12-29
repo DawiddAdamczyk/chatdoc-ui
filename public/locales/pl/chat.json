@@ -18,6 +18,6 @@
   "click if using a .env.local file": "kliknij jeśli używasz pliku .env.local",
   "Message limit is {{maxLength}} characters. You have entered {{valueLength}} characters.": "Limit wiadomości wynosi {{maxLength}} znaków. Wprowadziłeś {{valueLength}} znaków.",
   "Please enter a message": "Proszę wpisać swoją wiadomość",
-  "Chatbot Ollama is an advanced chatbot kit for Ollama's models aiming to mimic ChatGPT's interface and functionality.": "Chatbot Ollama to zaawansowane narzędzie chatbotów dla modeli czatów od OpenAI, którego celem jest naśladowanie interfejsu i funkcjonalności ChatGPT.",
+  "Chatdoc is an advanced chatbot kit for Ollama's models aiming to mimic ChatGPT's interface and functionality.": "Chatdoc to zaawansowane narzędzie chatbotów dla modeli czatów od OpenAI, którego celem jest naśladowanie interfejsu i funkcjonalności ChatGPT.",
   "Are you sure you want to clear all messages?": "Czy na pewno chcesz usunąć wszystkie wiadomości?"
 }

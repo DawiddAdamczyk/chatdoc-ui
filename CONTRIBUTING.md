@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-**Welcome to Chatbot Ollama!**
+**Welcome to Chatdoc!**
 
 We appreciate your interest in contributing to our project.
 

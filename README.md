@@ -12,8 +12,8 @@ This project is based on [chatbot-ui](https://github.com/mckaywrigley/chatbot-ui
 Build locally:
 
 ```shell
-docker build -t chatbot-ollama .
-docker run -p 3000:3000 chatbot-ollama
+docker build -t chatdoc-ui .
+docker run -p 3000:3000 chatdoc-ui
 ```
 
 
@@ -22,7 +22,7 @@ docker run -p 3000:3000 chatbot-ollama
 ### 1. Clone Repo
 
 ```bash
-git clone ttps://github.com/DawiddAdamczyk/chatdoc-ui.git
+git clone https://github.com/DawiddAdamczyk/chatdoc-ui.git
 ```
 
 ### 2. Install Dependencies
@@ -31,15 +31,13 @@ git clone ttps://github.com/DawiddAdamczyk/chatdoc-ui.git
 npm i
 ```
 
-### 3. Run Ollama server
+### 3. Run chatdoc server
 
-Either via the cli:
+See
 
 ```bash
-ollama serve
+https://github.com/PiotrDespot/chatdoc/
 ```
-
-or via the [desktop client](https://ollama.ai/download)
 
 ### 4. Run App
 
